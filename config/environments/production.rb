@@ -46,4 +46,8 @@ Metricus::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+  
+  # Make compatible with Heroku
+  # http://www.mail-archive.com/hobousers@googlegroups.com/msg12180.html
+  config.hobo.read_only_file_system=true
 end
