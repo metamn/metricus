@@ -1,5 +1,46 @@
 <!-- AUTOMATICALLY GENERATED FILE - DO NOT EDIT -->
 
+<def tag="card" for="Campaign">
+  <card class="campaign" param="default" merge>
+    <header: param>
+      <h4 param="heading"><name/></h4>
+    </header:>
+    <body: param>
+      <view:description param="description"/>
+    </body:>
+  </card>
+</def>
+
+<def tag="card" for="Project">
+  <card class="project" param="default" merge>
+    <header: param>
+      <h4 param="heading"><name/></h4>
+    </header:>
+    <body: param>
+      <view:description param="description"/>
+    </body:>
+  </card>
+</def>
+
+<def tag="card" for="Task">
+  <card class="task" param="default" merge>
+    <header: param>
+      <h4 param="heading"><name/></h4>
+    </header:>
+    <body: param>
+      <view:description param="description"/>
+    </body:>
+  </card>
+</def>
+
+<def tag="card" for="TaskAssignment">
+  <card class="task-assignment" param="default" merge>
+    <header: param>
+      <h4 param="heading"><name/></h4>
+    </header:>
+  </card>
+</def>
+
 <def tag="card" for="User">
   <card class="user" param="default" merge>
     <header: param>
