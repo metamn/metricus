@@ -10,7 +10,9 @@ class Project < ActiveRecord::Base
   
   has_many :campaigns, :dependent => :destroy
   children :campaigns
-
+  
+  has_many :documents, :dependent => :destroy, :accessible => :true
+  
   # --- Permissions --- #
 
   def create_permitted?

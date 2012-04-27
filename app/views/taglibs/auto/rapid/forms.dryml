@@ -3,9 +3,21 @@
 <def tag="form" for="Campaign">
   <form merge param="default">
     <error-messages param/>
-    <field-list fields="name, description, status, project" param/>
+    <field-list fields="name, description, status, documents, project" param/>
     <div param="actions">
       <submit label="#{ht 'campaign.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
+    </div>
+  </form>
+</def>
+
+
+
+<def tag="form" for="Document">
+  <form merge param="default">
+    <error-messages param/>
+    <field-list fields="title, url, description, campaign, project, task" param/>
+    <div param="actions">
+      <submit label="#{ht 'document.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
     </div>
   </form>
 </def>
@@ -15,7 +27,7 @@
 <def tag="form" for="Project">
   <form merge param="default">
     <error-messages param/>
-    <field-list fields="name, description" param/>
+    <field-list fields="name, description, documents" param/>
     <div param="actions">
       <submit label="#{ht 'project.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
     </div>
@@ -27,7 +39,7 @@
 <def tag="form" for="Task">
   <form merge param="default">
     <error-messages param/>
-    <field-list fields="name, description, status, campaign" param/>
+    <field-list fields="name, description, status, campaign, documents" param/>
     <div param="actions">
       <submit label="#{ht 'task.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
     </div>

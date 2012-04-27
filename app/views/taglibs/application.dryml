@@ -26,5 +26,9 @@
     <nav-item with="&Project"><ht key="project.nav_item" count="100"><model-name-human count="100"/></ht></nav-item>
     <nav-item with="&Campaign"><ht key="campaign.nav_item" count="100"><model-name-human count="100"/></ht></nav-item>
     <nav-item with="&Task"><ht key="task.nav_item" count="100"><model-name-human count="100"/></ht></nav-item>
+    <nav-item with="&Document"><ht key="document.nav_item" count="100"><model-name-human count="100"/></ht></nav-item>
   </navigation>
 </def>
+
+
+

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120427073239) do
+ActiveRecord::Schema.define(:version => 20120427092441) do
 
   create_table "campaigns", :force => true do |t|
     t.string   "name"
@@ -23,6 +23,21 @@ ActiveRecord::Schema.define(:version => 20120427073239) do
   end
 
   add_index "campaigns", ["project_id"], :name => "index_campaigns_on_project_id"
+
+  create_table "documents", :force => true do |t|
+    t.string   "title"
+    t.string   "url"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "project_id"
+    t.integer  "campaign_id"
+    t.integer  "task_id"
+  end
+
+  add_index "documents", ["campaign_id"], :name => "index_documents_on_campaign_id"
+  add_index "documents", ["project_id"], :name => "index_documents_on_project_id"
+  add_index "documents", ["task_id"], :name => "index_documents_on_task_id"
 
   create_table "projects", :force => true do |t|
     t.string   "name"

@@ -32,6 +32,16 @@ Metricus::Application.routes.draw do
   post 'projects/:project_id/campaigns(.:format)' => 'campaigns#create_for_project', :as => 'create_campaign_for_project'
 
 
+  # Resource routes for controller "documents"
+  get 'documents(.:format)' => 'documents#index', :as => 'documents'
+  get 'documents/new(.:format)', :as => 'new_document'
+  get 'documents/:id/edit(.:format)' => 'documents#edit', :as => 'edit_document'
+  get 'documents/:id(.:format)' => 'documents#show', :as => 'document', :constraints => { :id => %r([^/.?]+) }
+  post 'documents(.:format)' => 'documents#create', :as => 'create_document'
+  put 'documents/:id(.:format)' => 'documents#update', :as => 'update_document', :constraints => { :id => %r([^/.?]+) }
+  delete 'documents/:id(.:format)' => 'documents#destroy', :as => 'destroy_document', :constraints => { :id => %r([^/.?]+) }
+
+
   # Lifecycle routes for controller "users"
   put 'users/:id/accept_invitation(.:format)' => 'users#do_accept_invitation', :as => 'do_user_accept_invitation'
   get 'users/:id/accept_invitation(.:format)' => 'users#accept_invitation', :as => 'user_accept_invitation'

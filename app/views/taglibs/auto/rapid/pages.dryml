@@ -6,6 +6,7 @@
   <navigation class="main-nav" merge-attrs param="default">
     <nav-item href="#{base_url}/">Home</nav-item>
     <nav-item with="&Campaign"><ht key="campaign.nav_item" count="100"><model-name-human count="100"/></ht></nav-item>
+    <nav-item with="&Document"><ht key="document.nav_item" count="100"><model-name-human count="100"/></ht></nav-item>
     <nav-item with="&Project"><ht key="project.nav_item" count="100"><model-name-human count="100"/></ht></nav-item>
     <nav-item with="&Task"><ht key="task.nav_item" count="100"><model-name-human count="100"/></ht></nav-item>
   </navigation>
@@ -83,7 +84,6 @@
 
     <content: param>
           <header param="content-header">
-            <a:project param="parent-link">&laquo; <ht key="campaign.actions.back_to_parent" parent="Project" name="&this">Back to <name/></ht></a:project>
             <h2 param="heading">
               <ht key="campaign.show.heading" name="#{name(:no_wrapper => true)}">
                 Campaign <name/>
@@ -101,7 +101,7 @@
 
           <section param="content-body">
             <view:description param="description" />
-            <field-list fields="status" param/>
+            <field-list fields="status, project" param/>
             <section param="collection-section">
               <h3 param="collection-heading">
                 <ht key="task.collection.heading" count="&this.tasks.count" >
@@ -182,6 +182,128 @@
         </form>
       </section>
     </content:>
+  </page>
+</def>
+
+
+
+
+
+<!-- ====== Document Pages ====== -->
+
+<def tag="index-page" for="Document">
+  <page merge title="#{ht 'document.index.title', :default=>[model.model_name.human(:count=>100)] }">
+    <body: class="index-page document" param/>
+
+    <content: param>
+      <header param="content-header">
+        <h2 param="heading">
+          <ht key="document.index.heading">
+            <model-name-human model="&model"/>
+          </ht>
+        </h2>
+
+        <p param="count" if>
+          <ht key="document.collection.count" count="&collection_count">
+            <count summary/>
+          </ht>
+        </p>
+      </header>
+
+      <section param="content-body">
+        <a action="new" to="&model" param="new-link">
+          <ht key="document.actions.new">New Document</ht>
+        </a>
+
+        <page-nav param="top-page-nav"/>
+
+        <collection param/>
+
+        <page-nav param="bottom-page-nav"/>
+
+
+      </section>
+    </content:>
+  </page>
+</def>
+
+
+<def tag="new-page" for="Document">
+  <page merge title="#{ht 'document.new.title', :default=>[' New Document'] }">
+    <body: class="new-page document" param/>
+
+    <content: param>
+      <section param="content-header">
+        <h2 param="heading">
+          <ht key="document.new.heading">
+            New Document
+          </ht>
+        </h2>
+      </section>
+
+      <section param="content-body">
+        <form param>
+          <submit: label="#{ht 'document.actions.create', :default=>['Create Document']}"/>
+        </form>
+      </section>
+    </content:>
+  </page>
+</def>
+
+
+<def tag="show-page" for="Document">
+  <page merge title="#{ht 'document.show.title', :default=>['Document'], :name => name(:no_wrapper => true) }">
+
+    <body: class="show-page document" param/>
+
+    <content: param>
+          <header param="content-header">
+            <a:campaign param="parent-link">&laquo; <ht key="document.actions.back_to_parent" parent="Campaign" name="&this">Back to <name/></ht></a:campaign>
+            <h2 param="heading">
+              <ht key="document.show.heading" name="#{name(:no_wrapper => true)}">
+                Document <name/>
+              </ht>
+            </h2>
+
+            <record-flags fields="" param/>
+
+            <a action="edit" if="&can_edit?" param="edit-link">
+              <ht key="document.actions.edit" name="#{name(:no_wrapper => true)}">
+                Edit Document
+              </ht>
+            </a>
+          </header>
+
+          <section param="content-body">
+            <view:description param="description" />
+            <field-list fields="url, project, task" param/>
+          </section>
+    </content:>
+
+  </page>
+</def>
+
+
+<def tag="edit-page" for="Document">
+  <page merge title="#{ht 'document.edit.title', :default=>['Edit Document'], :name => name(:no_wrapper => true) }">
+
+    <body: class="edit-page document" param/>
+
+    <content:>
+      <section param="content-header">
+        <h2 param="heading">
+          <ht key="document.edit.heading" name="#{name(:no_wrapper => true)}">
+            Edit Document
+          </ht>
+        </h2>
+        <delete-button label="#{ht 'document.actions.delete', :default=>['Remove This Document']}" param/>
+      </section>
+
+      <section param="content-body">
+        <form param/>
+      </section>
+    </content:>
+
   </page>
 </def>
 

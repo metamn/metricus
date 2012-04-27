@@ -10,9 +10,11 @@ class Task < ActiveRecord::Base
   end
   
   belongs_to :campaign
+  
   has_many :task_assignments, :dependent => :destroy
   has_many :users, :through => :task_assignments
   
+  has_many :documents, :dependent => :destroy, :accessible => :true
 
   # --- Permissions --- #
 

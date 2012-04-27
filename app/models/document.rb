@@ -1,21 +1,17 @@
-class Campaign < ActiveRecord::Base
+class Document < ActiveRecord::Base
 
   hobo_model # Don't put anything above this
 
   fields do
-    name        :string
+    title       :string
+    url         :string
     description :text
-    status      :string
     timestamps
   end
-  
-  belongs_to :project
-  
-  has_many :tasks, :dependent => :destroy
-  children :tasks
 
-  has_many :documents, :dependent => :destroy, :accessible => :true
-  
+  belongs_to :project
+  belongs_to :campaign
+  belongs_to :task
 
   # --- Permissions --- #
 
