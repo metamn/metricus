@@ -14,6 +14,9 @@ Metricus::Application.routes.draw do
   put 'tasks/:id(.:format)' => 'tasks#update', :as => 'update_task', :constraints => { :id => %r([^/.?]+) }
   delete 'tasks/:id(.:format)' => 'tasks#destroy', :as => 'destroy_task', :constraints => { :id => %r([^/.?]+) }
 
+  # Owner routes for controller "tasks"
+  post 'campaigns/:campaign_id/tasks(.:format)' => 'tasks#create_for_campaign', :as => 'create_task_for_campaign'
+
 
   # Resource routes for controller "campaigns"
   get 'campaigns(.:format)' => 'campaigns#index', :as => 'campaigns'
@@ -23,6 +26,10 @@ Metricus::Application.routes.draw do
   post 'campaigns(.:format)' => 'campaigns#create', :as => 'create_campaign'
   put 'campaigns/:id(.:format)' => 'campaigns#update', :as => 'update_campaign', :constraints => { :id => %r([^/.?]+) }
   delete 'campaigns/:id(.:format)' => 'campaigns#destroy', :as => 'destroy_campaign', :constraints => { :id => %r([^/.?]+) }
+
+  # Owner routes for controller "campaigns"
+  get 'projects/:project_id/campaigns/new(.:format)' => 'campaigns#new_for_project', :as => 'new_campaign_for_project'
+  post 'projects/:project_id/campaigns(.:format)' => 'campaigns#create_for_project', :as => 'create_campaign_for_project'
 
 
   # Lifecycle routes for controller "users"

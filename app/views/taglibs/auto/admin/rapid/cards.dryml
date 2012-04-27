@@ -7,6 +7,9 @@
     </header:>
     <body: param>
       <view:description param="description"/>
+      <ht key="task.collection.count" count="&this.tasks.size">
+         <count:tasks param/>
+      </ht>
     </body:>
   </card>
 </def>
@@ -18,6 +21,9 @@
     </header:>
     <body: param>
       <view:description param="description"/>
+      <ht key="campaign.collection.count" count="&this.campaigns.size">
+         <count:campaigns param/>
+      </ht>
     </body:>
   </card>
 </def>

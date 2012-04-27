@@ -83,6 +83,7 @@
 
     <content: param>
           <header param="content-header">
+            <a:project param="parent-link">&laquo; <ht key="campaign.actions.back_to_parent" parent="Project" name="&this">Back to <name/></ht></a:project>
             <h2 param="heading">
               <ht key="campaign.show.heading" name="#{name(:no_wrapper => true)}">
                 Campaign <name/>
@@ -100,7 +101,28 @@
 
           <section param="content-body">
             <view:description param="description" />
-            <field-list fields="status, project" param/>
+            <field-list fields="status" param/>
+            <section param="collection-section">
+              <h3 param="collection-heading">
+                <ht key="task.collection.heading" count="&this.tasks.count" >
+                  <human-collection-name collection="tasks" your/>
+                </ht>
+              </h3>
+
+              <collection:tasks param/>
+
+              <section param="add-to-collection" if="&can_create?(@campaign.tasks)">
+                <h3 param="add-form-heading">
+                  <ht key="task.collection.add_form_heading" count="1">
+                    Add a Task
+                  </ht>
+                </h3>
+                <form with="&@task || new_for_current_user(@campaign.tasks)" owner="campaign" without-cancel param>
+                  <field-list: skip="campaign"/>
+                  <submit: label="#{ht 'task.actions.add', :default=>['Add'] }"/>
+                </form>
+              </section>
+            </section>
           </section>
     </content:>
 
@@ -128,6 +150,38 @@
       </section>
     </content:>
 
+  </page>
+</def>
+
+
+
+<def tag="new-for-project-page" polymorphic/>
+<def tag="new-for-project-page" for="Campaign">
+  <page merge title="#{ht 'campaign.new_for_owner.title', :default=>['New Campaign for']} #{name :with => @project}">
+    <body: class="new-for-owner-page  campaign" param/>
+
+    <content: param>
+      <header param="content-header">
+        <h2 param="heading">
+          <ht key="campaign.new_for_owner.heading">
+            New Campaign
+          </ht>
+        </h2>
+        <h3 param="subheading">
+          <ht key="campaign.new_for_owner.subheading">
+            For:
+          </ht>
+          <a with="&@project"/>
+        </h3>
+      </header>
+
+      <section param="content-body">
+        <form owner="project" method="post" param>
+          <field-list: skip="project"/>
+          <submit: label="#{ht 'campaign.actions.create', :default=>['Create Campaign']}"/>
+        </form>
+      </section>
+    </content:>
   </page>
 </def>
 
@@ -221,6 +275,21 @@
 
           <section param="content-body">
             <view:description param="description" />
+            <section param="collection-section">
+              <h3 param="collection-heading">
+                <ht key="campaign.collection.heading" count="&this.campaigns.count" >
+                  <human-collection-name collection="campaigns" your/>
+                </ht>
+              </h3>
+
+              <collection:campaigns param/>
+
+              <a:campaigns action="new" if="&can_create?(@project.campaigns)" param="new-link">
+                <ht key="campaign.actions.new" count="1">
+                  New Campaign
+                </ht>
+              </a:campaigns>
+            </section>
           </section>
     </content:>
 
@@ -324,6 +393,7 @@
 
     <content: param>
           <header param="content-header">
+            <a:campaign param="parent-link">&laquo; <ht key="task.actions.back_to_parent" parent="Campaign" name="&this">Back to <name/></ht></a:campaign>
             <h2 param="heading">
               <ht key="task.show.heading" name="#{name(:no_wrapper => true)}">
                 Task <name/>
@@ -341,7 +411,7 @@
 
           <section param="content-body">
             <view:description param="description" />
-            <field-list fields="status, campaign" param/>
+            <field-list fields="status" param/>
           </section>
     </content:>
 
@@ -371,6 +441,9 @@
 
   </page>
 </def>
+
+
+
 
 
 

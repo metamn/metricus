@@ -11,7 +11,7 @@ class Campaign < ActiveRecord::Base
   
   belongs_to :project
   has_many :tasks, :dependent => :destroy
-  
+  children :tasks
 
   # --- Permissions --- #
 

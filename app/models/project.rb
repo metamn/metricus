@@ -9,6 +9,7 @@ class Project < ActiveRecord::Base
   end
   
   has_many :campaigns, :dependent => :destroy
+  children :campaigns
 
   # --- Permissions --- #
 
