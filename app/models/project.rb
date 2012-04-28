@@ -8,10 +8,12 @@ class Project < ActiveRecord::Base
     timestamps
   end
   
-  has_many :campaigns, :dependent => :destroy
-  children :campaigns
+  has_many :campaigns, :dependent => :destroy, :accessible => true
+  has_many :documents, :dependent => :destroy, :accessible => true
   
-  has_many :documents, :dependent => :destroy, :accessible => :true
+  children :campaigns, :documents
+  
+  
   
   # --- Permissions --- #
 

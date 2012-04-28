@@ -15,6 +15,8 @@ class Task < ActiveRecord::Base
   has_many :users, :through => :task_assignments
   
   has_many :documents, :dependent => :destroy, :accessible => :true
+  
+  children :users, :documents
 
   # --- Permissions --- #
 

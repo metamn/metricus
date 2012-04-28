@@ -11,10 +11,10 @@ class Campaign < ActiveRecord::Base
   
   belongs_to :project
   
-  has_many :tasks, :dependent => :destroy
-  children :tasks
-
+  has_many :tasks, :dependent => :destroy, :accessible => true
   has_many :documents, :dependent => :destroy, :accessible => :true
+  
+  children :tasks, :documents
   
 
   # --- Permissions --- #

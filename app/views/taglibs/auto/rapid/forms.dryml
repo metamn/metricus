@@ -3,7 +3,7 @@
 <def tag="form" for="Campaign">
   <form merge param="default">
     <error-messages param/>
-    <field-list fields="name, description, status, documents, project" param/>
+    <field-list fields="name, description, status, documents, project, tasks" param/>
     <div param="actions">
       <submit label="#{ht 'campaign.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
     </div>
@@ -27,7 +27,7 @@
 <def tag="form" for="Project">
   <form merge param="default">
     <error-messages param/>
-    <field-list fields="name, description, documents" param/>
+    <field-list fields="name, description, campaigns, documents" param/>
     <div param="actions">
       <submit label="#{ht 'project.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
     </div>

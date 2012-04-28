@@ -83,6 +83,8 @@
     <body: class="show-page campaign" param/>
 
     <content: param>
+      <section-group>
+        <section param="main-content">
           <header param="content-header">
             <h2 param="heading">
               <ht key="campaign.show.heading" name="#{name(:no_wrapper => true)}">
@@ -124,6 +126,19 @@
               </section>
             </section>
           </section>
+        </section>
+
+        <aside param>
+          <section param="documents-collection-section">
+            <h3 param="documents-collection-heading">
+              <ht key="document.collection.heading" count="&this.documents.count" >
+                <human-collection-name collection="documents" your/>
+              </ht>
+            </h3>
+            <collection:documents  param="documents-collection"/>
+          </section>
+        </aside>
+      </section-group>
     </content:>
 
   </page>
@@ -258,7 +273,7 @@
 
     <content: param>
           <header param="content-header">
-            <a:campaign param="parent-link">&laquo; <ht key="document.actions.back_to_parent" parent="Campaign" name="&this">Back to <name/></ht></a:campaign>
+            <a:task param="parent-link">&laquo; <ht key="document.actions.back_to_parent" parent="Task" name="&this">Back to <name/></ht></a:task>
             <h2 param="heading">
               <ht key="document.show.heading" name="#{name(:no_wrapper => true)}">
                 Document <name/>
@@ -276,7 +291,7 @@
 
           <section param="content-body">
             <view:description param="description" />
-            <field-list fields="url, project, task" param/>
+            <field-list fields="url, campaign, project" param/>
           </section>
     </content:>
 
@@ -379,6 +394,8 @@
     <body: class="show-page project" param/>
 
     <content: param>
+      <section-group>
+        <section param="main-content">
           <header param="content-header">
             <h2 param="heading">
               <ht key="project.show.heading" name="#{name(:no_wrapper => true)}">
@@ -413,6 +430,19 @@
               </a:campaigns>
             </section>
           </section>
+        </section>
+
+        <aside param>
+          <section param="documents-collection-section">
+            <h3 param="documents-collection-heading">
+              <ht key="document.collection.heading" count="&this.documents.count" >
+                <human-collection-name collection="documents" your/>
+              </ht>
+            </h3>
+            <collection:documents  param="documents-collection"/>
+          </section>
+        </aside>
+      </section-group>
     </content:>
 
   </page>
@@ -514,6 +544,8 @@
     <body: class="show-page task" param/>
 
     <content: param>
+      <section-group>
+        <section param="main-content">
           <header param="content-header">
             <a:campaign param="parent-link">&laquo; <ht key="task.actions.back_to_parent" parent="Campaign" name="&this">Back to <name/></ht></a:campaign>
             <h2 param="heading">
@@ -534,7 +566,29 @@
           <section param="content-body">
             <view:description param="description" />
             <field-list fields="status" param/>
+            <section param="collection-section">
+              <h3 param="collection-heading">
+                <ht key="user.collection.heading" count="&this.users.count" >
+                  <human-collection-name collection="users" your/>
+                </ht>
+              </h3>
+
+              <collection:users param/>
+            </section>
           </section>
+        </section>
+
+        <aside param>
+          <section param="documents-collection-section">
+            <h3 param="documents-collection-heading">
+              <ht key="document.collection.heading" count="&this.documents.count" >
+                <human-collection-name collection="documents" your/>
+              </ht>
+            </h3>
+            <collection:documents  param="documents-collection"/>
+          </section>
+        </aside>
+      </section-group>
     </content:>
 
   </page>

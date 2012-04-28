@@ -46,6 +46,9 @@
     </header:>
     <body: param>
       <view:description param="description"/>
+      <ht key="user.collection.count" count="&this.users.size">
+         <count:users param/>
+      </ht>
     </body:>
   </card>
 </def>
