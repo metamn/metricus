@@ -1,10 +1,38 @@
 <extend tag="page">
   <old-page merge>
+    <after-title:>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="stylesheet" href="/hobothemes/metricus/stylesheets/base.css" media="screen" />
+      <link rel="stylesheet" href="/hobothemes/metricus/stylesheets/layout.css" media="screen" />
+      <link rel="stylesheet" href="/hobothemes/metricus/stylesheets/theme.css" media="screen" />
+      
+      <link rel="stylesheet" href="/hobothemes/metricus/stylesheets/mobile.css" media="screen and (max-width: 640px)" />
+      <link rel="stylesheet" href="/hobothemes/metricus/stylesheets/tablet.css" media="screen and (min-width: 641px) and (max-width: 1024px)" />
+      <link rel="stylesheet" href="/hobothemes/metricus/stylesheets/wide.css" media="screen and (min-width: 1025px) and (max-width: 1399px)" />
+      <link rel="stylesheet" href="/hobothemes/metricus/stylesheets/large.css" media="screen and (min-width: 1400px)" />
+
+      <link rel="stylesheet" href="/hobothemes/metricus/stylesheets/portrait.css" media="all and (orientation:portrait)" />
+
+      <script type="text/javascript" src="/hobothemes/metricus/javascripts/modernizr.custom.50763.js"></script>      
+      <script type="text/javascript" src="/hobothemes/metricus/javascripts/css3-mediaqueries.js"></script>
+    </after-title:>
+      
     <stylesheets: param>
-      <stylesheet name="reset"/>
-      <theme-stylesheet/>
-      <theme-stylesheet name="rapid-ui"/>
-      <stylesheet name="application" param="app-stylesheet"/>
+      <!-- This is a must to eliminate all other default css inserted by hobo -->
     </stylesheets:>
+    
+    <scripts: param>
+      <!-- This is a must to eliminate all other default js inserted by hobo -->      
+    </scripts:>
+    
+    <!-- Wrapping everything into a container -->
+    <body: replace>
+    <div class="container">
+    <body restore/>
+    </div>
+    </body:>
+    
   </old-page>
 </extend>
+
+

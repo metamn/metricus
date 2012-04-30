@@ -1,0 +1,10 @@
+/* The Grid
+*/
+
+.container {
+  width: 90%;
+  max-width: 60em; /* 960 px */
+  margin: 0 auto;
+}
+
+
