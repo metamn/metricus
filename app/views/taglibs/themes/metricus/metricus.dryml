@@ -21,9 +21,6 @@
       <!-- This is a must to eliminate all other default css inserted by hobo -->
     </stylesheets:>
     
-    <scripts: param>
-      <!-- This is a must to eliminate all other default js inserted by hobo -->      
-    </scripts:>
     
     <!-- Wrapping everything into a container -->
     <body: replace>
@@ -32,6 +29,12 @@
     </div>
     </body:>
     
+    <!-- Wrapping search into a container -->
+    <live-search: replace>
+    <div class="live-search-container">
+    <live-search restore/>
+    </div>
+      </live-search:>
   </old-page>
 </extend>
 

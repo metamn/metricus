@@ -19,7 +19,9 @@
 </extend>
 
 
-<!-- rewrite main navigation -->
+
+
+<!-- Rewrite main navigation -->
 
 <def tag="main-nav">
   <navigation class="main-nav" merge-attrs param="default">
@@ -29,6 +31,31 @@
     <nav-item with="&Document"><ht key="document.nav_item" count="100"><model-name-human count="100"/></ht></nav-item>
   </navigation>
 </def>
+
+
+<!-- Index pages -->
+
+<extend tag="index-page">
+  <old-index-page merge>
+    <heading: replace></heading:>
+  </old-index-page>
+</extend>
+
+
+<!-- Projects index -->
+<extend tag="card" for="Project">
+  <old-card merge>
+    <body: replace>
+      <view field="description"/>
+      <div id="related">
+        <view with="&this.campaigns.size" /> Campaigns.
+        <view with="&this.documents.size" /> Documents.
+      </div>
+    </body:>
+  </old-card>
+</extend>
+
+
 
 
 
