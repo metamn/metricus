@@ -81,6 +81,7 @@
 
     <content: param>
           <header param="content-header">
+            <a:tasks param="parent-link">&laquo; <ht key="user.actions.back_to_parent" parent="Task" name="&this">Back to <name/></ht></a:tasks>
             <h2 param="heading">
               <ht key="user.show.heading" name="#{name(:no_wrapper => true)}">
                 User <name/>

@@ -273,7 +273,6 @@
 
     <content: param>
           <header param="content-header">
-            <a:task param="parent-link">&laquo; <ht key="document.actions.back_to_parent" parent="Task" name="&this">Back to <name/></ht></a:task>
             <h2 param="heading">
               <ht key="document.show.heading" name="#{name(:no_wrapper => true)}">
                 Document <name/>
@@ -291,7 +290,7 @@
 
           <section param="content-body">
             <view:description param="description" />
-            <field-list fields="url, campaign, project" param/>
+            <field-list fields="url, campaign, project, task" param/>
           </section>
     </content:>
 
@@ -698,6 +697,7 @@
 
     <content: param>
           <header param="content-header">
+            <a:tasks param="parent-link">&laquo; <ht key="user.actions.back_to_parent" parent="Task" name="&this">Back to <name/></ht></a:tasks>
             <h2 param="heading">
               <ht key="user.show.heading" name="#{name(:no_wrapper => true)}">
                 User <name/>

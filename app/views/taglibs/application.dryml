@@ -6,7 +6,7 @@
 <include src="taglibs/auto/rapid/pages"/>
 <include src="taglibs/auto/rapid/forms"/>
 
-<set-theme name="clean"/>
+<set-theme name="metricus"/>
 
 <extend tag="page">
   <old-page merge>
